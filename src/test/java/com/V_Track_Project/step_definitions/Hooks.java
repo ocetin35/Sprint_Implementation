@@ -1,7 +1,7 @@
-package com.Cydeo.step_definitions;
+package com.V_Track_Project.step_definitions;
 
-import com.Cydeo.utilities.BrowserUtils;
-import com.Cydeo.utilities.Driver;
+import com.V_Track_Project.utilities.BrowserUtils;
+import com.V_Track_Project.utilities.Driver;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
