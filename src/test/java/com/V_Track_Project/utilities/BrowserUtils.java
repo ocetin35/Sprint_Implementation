@@ -16,10 +16,10 @@ import java.util.Set;
 public class BrowserUtils {
 
     /*
-           This method will accept int (in seconds)
-           and execute Thread.sleep method for given duration
-           Arg: int second
-            */
+ This method will accept int (in seconds)
+ and execute Thread.sleep method for given duration
+ Arg: int second
+  */
     public static void sleep(int second){
         second *= 1000;
         try{

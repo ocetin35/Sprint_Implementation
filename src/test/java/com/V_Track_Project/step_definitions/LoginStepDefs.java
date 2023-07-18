@@ -1,39 +1,78 @@
 package com.V_Track_Project.step_definitions;
 
-import com.V_Track_Project.pages.LoginPage;
+import com.V_Track_Project.pages.R_VytrackLoginPage;
+import com.V_Track_Project.utilities.BrowserUtils;
 import com.V_Track_Project.utilities.ConfigurationReader;
+import com.V_Track_Project.utilities.Driver;
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+import org.junit.Assert;
 
 public class LoginStepDefs {
-    @Given("the user is on the login page")
-    public void the_user_is_on_the_login_page() {
-        System.out.println("Login to app in Before method");
+    R_VytrackLoginPage vytrackLoginPage = new R_VytrackLoginPage();
+
+    @Given("user is on the login page")
+    public void user_is_on_the_login_page() {
+
     }
 
-    @Given("the user logged in as {string}")
-    public void the_user_logged_in_as(String userType) {
-        //based on input enter that user information
-        String username =null;
-        String password =null;
+    @When("user enters the driver information")
+    public void user_enters_the_driver_information() {
+        vytrackLoginPage.login(ConfigurationReader.getProperty("driver_username"),ConfigurationReader.getProperty("driver_password"));
 
-        if(userType.equalsIgnoreCase("driver")){
-            username = ConfigurationReader.getProperty("driver_username");
-            password = ConfigurationReader.getProperty("driver_password");
-        }else if(userType.equalsIgnoreCase("sales manager")){
-            username = ConfigurationReader.getProperty("sales_manager_username");
-            password = ConfigurationReader.getProperty("sales_manager_password");
-        }else if(userType.equalsIgnoreCase("store manager")){
-            username = ConfigurationReader.getProperty("store_manager_username");
-            password = ConfigurationReader.getProperty("store_manager_password");
-        }
-        //send username and password and login
-        new LoginPage().login(username,password);
     }
 
-    @Given("the user logged in with username as {string} and password as {string}")
-    public void the_user_logged_in_with_username_as_and_password_as(String username, String password) {
-        LoginPage loginPage=new LoginPage();
-        loginPage.login(username,password);
+    @Then("user should be able to login")
+    public void user_should_be_able_to_login() {
+
+        BrowserUtils.sleep(3);
+
+        String actualTitle = Driver.getDriver().getTitle();
+        String expectedTitle = "Dashboard";
+
+
+        // we need to use explicit wait to handle conditions
+        // implicit wait doesn't work for assertion because there is no findelement(s)/FindBy to look for
+//        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(20));
+//        wait.until(ExpectedConditions.invisibilityOf(vytrackLoginPage.loadingBar));
+
+        Assert.assertEquals("Title verification failed!",expectedTitle,actualTitle);
+
+
+    }
+
+    @When("user enters the sales manager information")
+    public void user_enters_the_sales_manager_information() {
+        vytrackLoginPage.login(ConfigurationReader.getProperty("sales_manager_username"),ConfigurationReader.getProperty("sales_manager_password"));
+
+    }
+
+    @When("user enters the store manager information")
+    public void user_enters_the_store_manager_information() {
+        vytrackLoginPage.login(ConfigurationReader.getProperty("store_manager_username"),ConfigurationReader.getProperty("store_manager_password"));
+    }
+
+
+    @When("user enters the {string} information")
+    public void user_enters_the_information(String userType) {
+
+        vytrackLoginPage.loginDynamic(userType);
+
+    }
+
+    @When("the user login with {string},{string}")
+    public void theUserLoginWith(String username, String password) {
+
+        vytrackLoginPage.login(username,password);
+
+    }
+
+    @Then("the user should not be able to log in")
+    public void theUserShouldNotBeAbleToLogIn() {
+
+        BrowserUtils.verifyTitle("Login");
+
     }
 
 }
