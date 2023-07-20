@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.List;
+
 public class R_VytrackLoginPage {
     @FindBy(id = "prependedInput")
     public WebElement userName;
@@ -18,6 +20,8 @@ public class R_VytrackLoginPage {
 
     @FindBy(className = "loader-mask")
     public WebElement loadingBar;
+
+
 
     public R_VytrackLoginPage() {
         PageFactory.initElements(Driver.getDriver(), this);
