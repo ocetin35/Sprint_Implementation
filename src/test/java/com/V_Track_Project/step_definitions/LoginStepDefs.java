@@ -129,7 +129,7 @@ public class LoginStepDefs {
     String actualImage = Driver.getDriver().getCurrentUrl();
     //BrowserUtils.waitFor(5);
     String expectedImage = "https://qa1.vytrack.com/entity/Extend_Entity_Carreservation?restore=1";
-
+    // Assertion
     Assert.assertTrue(expectedImage.contains(actualImage));
     }
 }
