@@ -36,7 +36,7 @@ public class US08_CalendarEventPage {
     public WebElement seeDefaultRepeatEveryDayValueInCheckBox;
 
 
-    @FindBy(xpath = "//*[@id=\"temp-validation-name-162-error\"]/span/span")
+    @FindBy(xpath = "//span[text()='This value should not be blank.']")
     public WebElement errorMessageText;
 
 

@@ -77,26 +77,37 @@ public class US08_CalendarEvent_StepDefs {
 
     @Then("They should see the number {string} by default in the Repeat Every input.")
     public void theyShouldSeeTheNumberByDefaultInTheRepeatEveryInput(String arg0) {
-        String actualValue = us08CalendarEventPage.seeDefaultRepeatEveryDayValueInCheckBox.getAttribute("1");
+        int expected = 1;
+        String actualValue = us08CalendarEventPage.seeDefaultRepeatEveryDayValueInCheckBox.getAttribute("value");
         try {
             int actualValueInt = Integer.parseInt(actualValue);
             System.out.println("actualValue = " + actualValue);
+            Assert.assertEquals(expected,actualValueInt);
 
         } catch (NumberFormatException e) {
             System.out.println("invalid number");
         }
 
+
     }
+
 
     @And("They clear \\(delete) the number {int}")
     public void theyClearDeleteTheNumber(int arg0) {
+
         us08CalendarEventPage.seeDefaultRepeatEveryDayValueInCheckBox.clear();
     }
 
     @Then("They should see an error message {string}")
     public void they_should_see_an_error_message(String expectedErrorMessage) {
-        us08CalendarEventPage.errorMessageText.isDisplayed();
-        Assert.assertEquals(us08CalendarEventPage.errorMessageText.getText(), expectedErrorMessage);
+        //us08CalendarEventPage.errorMessageText.isDisplayed();
+        //Assert.assertEquals(us08CalendarEventPage.errorMessageText.getText(), expectedErrorMessage);
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(30));
+        wait.until(ExpectedConditions.visibilityOf(us08CalendarEventPage.errorMessageText));
+
+        expectedErrorMessage = "This value should not be blank.";
+        String actualError = us08CalendarEventPage.errorMessageText.getText();
+        Assert.assertEquals(actualError,expectedErrorMessage);
     }
 
 
