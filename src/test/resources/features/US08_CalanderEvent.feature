@@ -10,10 +10,6 @@ Feature: Default
 		When They click "Calendar Events" under the Activities
 		And They move to the right corner over Create Calendar Event
 		And They click the "Create Calendar event" button
-		#And they click on title box
-		#And they add text in title box
-		#And they click on Description box
-		#And They add text to Description box
 		And They check the "Repeat" checkbox
 	@B29G33-211
 	Scenario: user should see the number “1” by default in the Repeat Every input. 

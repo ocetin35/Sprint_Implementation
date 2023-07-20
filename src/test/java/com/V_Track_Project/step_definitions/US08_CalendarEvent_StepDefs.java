@@ -64,29 +64,6 @@ public class US08_CalendarEvent_StepDefs {
         wait.until(ExpectedConditions.elementToBeClickable(us08CalendarEventPage.clickCreateCalendarEventLink));
         us08CalendarEventPage.clickCreateCalendarEventLink.click();
 
-       //
-
-    }
-
-    @And("they click on title box")
-    public void theyClickOnTitleBox() {
-        us08CalendarEventPage.ClickOnTitleBox.click();
-
-    }
-
-    @And("they add text in title box")
-    public void theyAddTextInTitleBox() {
-        us08CalendarEventPage.ClickOnTitleBox.sendKeys("StandUp Meeting");
-    }
-
-    @And("they click on Description box")
-    public void theyClickOnDescriptionBox() {
-        us08CalendarEventPage.ClickOnDescriptionBox.click();
-
-    }
-    @And("They add text to Description box")
-    public void theyAddTextToDescriptionBox() {
-        us08CalendarEventPage.ClickOnDescriptionBox.sendKeys("Daily report");
     }
 
 
@@ -105,15 +82,10 @@ public class US08_CalendarEvent_StepDefs {
             int actualValueInt = Integer.parseInt(actualValue);
             System.out.println("actualValue = " + actualValue);
 
-        }catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             System.out.println("invalid number");
         }
-//
 
-        //us08CalendarEventPage.seeDefaultRepeatEveryDayValueInCheckBox.isDisplayed();
-
-       // String actualValue = us08CalendarEventPage.getRepeatEveryValue();
-      // Assert.assertEquals(expectedValue, actualValue);
     }
 
     @And("They clear \\(delete) the number {int}")
@@ -121,10 +93,6 @@ public class US08_CalendarEvent_StepDefs {
         us08CalendarEventPage.seeDefaultRepeatEveryDayValueInCheckBox.clear();
     }
 
-    //@When("They clear \\(delete) the number {string}")
-   // public void they_clear_delete_the_number(String value) {
-
-   // }
     @Then("They should see an error message {string}")
     public void they_should_see_an_error_message(String expectedErrorMessage) {
         us08CalendarEventPage.errorMessageText.isDisplayed();

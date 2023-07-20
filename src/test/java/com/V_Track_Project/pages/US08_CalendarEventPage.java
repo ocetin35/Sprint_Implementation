@@ -26,14 +26,6 @@ public class US08_CalendarEventPage {
     @FindBy(xpath = "//*[@id=\"container\"]/div[2]/div/div/div[2]/div/a")
     public WebElement clickCreateCalendarEventLink;
 
-
-    @FindBy (xpath = "//*[@id=\"oro_calendar_event_form_title-uid-64b9356b5c12a\"]")
-    public WebElement ClickOnTitleBox;
-
-
-    @FindBy (xpath = "//*[@id=\"tinymce\"]")
-    public WebElement ClickOnDescriptionBox;
-
     @FindBy(xpath = "//*[@id=\"date_selector_oro_calendar_event_form_start-uid-64b947018bec1\"]")
     public WebElement clickOnDateSelectorBox;
 
@@ -42,7 +34,6 @@ public class US08_CalendarEventPage {
 
     @FindBy(xpath = "//input[@class='recurrence-subview-control__number']")
     public WebElement seeDefaultRepeatEveryDayValueInCheckBox;
-
 
 
     @FindBy(xpath = "//*[@id=\"temp-validation-name-162-error\"]/span/span")
