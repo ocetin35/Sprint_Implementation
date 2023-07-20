@@ -12,8 +12,10 @@ import org.junit.Assert;
 public class LoginStepDefs {
     R_VytrackLoginPage vytrackLoginPage = new R_VytrackLoginPage();
 
+
     @Given("user is on the login page")
     public void user_is_on_the_login_page() {
+
 
     }
 
@@ -74,5 +76,6 @@ public class LoginStepDefs {
         BrowserUtils.verifyTitle("Login");
 
     }
+
 
 }
