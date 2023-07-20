@@ -1,10 +1,14 @@
+
 @B29G33-194
 Feature: Default
 
 
+
   @B29G33-192
   Scenario: How to use the Pinbar
-    Given User is on the home
+    Given user is on the login page
+    When user enters the driver information
+    Then user should be able to login
     And User clicks on any page on the home page
     When User clicks on the Pinbar icon
     Then User sees desired page highlighted in the header section in yellow
