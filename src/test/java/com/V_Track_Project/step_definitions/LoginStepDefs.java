@@ -1,16 +1,26 @@
 package com.V_Track_Project.step_definitions;
 
+
 import com.V_Track_Project.pages.R_VytrackLoginPage;
 import com.V_Track_Project.utilities.BrowserUtils;
 import com.V_Track_Project.utilities.ConfigurationReader;
 import com.V_Track_Project.utilities.Driver;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class LoginStepDefs {
     R_VytrackLoginPage vytrackLoginPage = new R_VytrackLoginPage();
+
 
     @Given("user is on the login page")
     public void user_is_on_the_login_page() {
@@ -26,16 +36,16 @@ public class LoginStepDefs {
     @Then("user should be able to login")
     public void user_should_be_able_to_login() {
 
-        BrowserUtils.sleep(3);
 
-        String actualTitle = Driver.getDriver().getTitle();
+
         String expectedTitle = "Dashboard";
 
 
         // we need to use explicit wait to handle conditions
         // implicit wait doesn't work for assertion because there is no findelement(s)/FindBy to look for
-//        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(20));
-//        wait.until(ExpectedConditions.invisibilityOf(vytrackLoginPage.loadingBar));
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(20));
+        wait.until(ExpectedConditions.titleIs("Dashboard"));
+        String actualTitle = Driver.getDriver().getTitle();
 
         Assert.assertEquals("Title verification failed!",expectedTitle,actualTitle);
 
@@ -68,11 +78,7 @@ public class LoginStepDefs {
 
     }
 
-    @Then("the user should not be able to log in")
-    public void theUserShouldNotBeAbleToLogIn() {
 
-        BrowserUtils.verifyTitle("Login");
 
-    }
 
-}
+ }
