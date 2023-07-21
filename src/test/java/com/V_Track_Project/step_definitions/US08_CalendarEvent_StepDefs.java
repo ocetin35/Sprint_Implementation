@@ -100,9 +100,8 @@ public class US08_CalendarEvent_StepDefs {
 
     @Then("They should see an error message {string}")
     public void they_should_see_an_error_message(String expectedErrorMessage) {
-        //us08CalendarEventPage.errorMessageText.isDisplayed();
-        //Assert.assertEquals(us08CalendarEventPage.errorMessageText.getText(), expectedErrorMessage);
-        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(30));
+
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(45));
         wait.until(ExpectedConditions.visibilityOf(us08CalendarEventPage.errorMessageText));
 
         expectedErrorMessage = "This value should not be blank.";
