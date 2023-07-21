@@ -483,4 +483,17 @@ public class BrowserUtils {
         new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(time)).until(ExpectedConditions.presenceOfElementLocated(by));
     }
 
+    public static void switchTitle(){
+
+        for (String each : Driver.getDriver().getWindowHandles()) {
+            Driver.getDriver().switchTo().window(each);
+            System.out.println( Driver.getDriver().getTitle());
+        }
+
+    }
+
+
+
+
+
 }

@@ -15,7 +15,9 @@ import org.junit.runner.RunWith;
         features = "src/test/resources/features",
         glue = "com/V_Track_Project/step_definitions",
         dryRun = false,
-        tags = "@B29G33-212",
+
+        tags = "",
+       
         publish = true //generating a report with public link
 )
 public class Runner {}
